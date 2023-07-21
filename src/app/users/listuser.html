@@ -12,11 +12,11 @@
 </div>
 <nav aria-label="Page navigation example">
   <ul class="pagination">
-    <li class="page-item"><a class="page-link" (click)="goToPage(1)" >Previous</a></li>
+    <li class="page-item"><a class="page-link" (click)="goToPrev()" >Previous</a></li>
 
     <li *ngFor="let pageNo of pages"  class="page-item"><a class="page-link" (click)="goToPage(pageNo)" >{{pageNo}}</a></li>
 
-    <li class="page-item"><a class="page-link" href="#" [attr.disabled]="currPage >= noPages" (click)="goToNext()">Next</a></li>
+    <li class="page-item"><a class="page-link"  [attr.disabled]="currPage >= noPages" (click)="goToNext()">Next</a></li>
   </ul>
 </nav>
 

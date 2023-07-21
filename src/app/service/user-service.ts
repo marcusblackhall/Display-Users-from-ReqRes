@@ -1,6 +1,6 @@
   import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { User, UserData, UserResp } from '../model/user';
+import { NO_PER_PAGE, User, UserData, UserResp } from '../model/user';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -14,14 +14,15 @@ export class UserService {
   }
 
   getUsers(page: number): Observable<UserData> {
-    const params = new HttpParams().set('page', page.toString());
+    const params = new HttpParams()
+    .set('page', page.toString())
+    .set('per_page',NO_PER_PAGE);
 
     return this.http.get<UserData>(this.apiUrl, { params });
 
   }
 
   getUser(id: string): Observable<UserResp> {
-
 
     return this.http.get<UserResp>(this.apiUrl + "/" + id);
 

@@ -17,3 +17,5 @@ export  interface UserResp {
 
   data: User
 }
+
+export const NO_PER_PAGE = 4 as const;

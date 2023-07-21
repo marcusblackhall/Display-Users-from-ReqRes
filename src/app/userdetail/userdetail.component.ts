@@ -17,11 +17,8 @@ export class UserdetailComponent implements OnInit {
   constructor(private route:ActivatedRoute, private userService:UserService ) { }
 
   ngOnInit(): void {
-
    this.route.paramMap.pipe(
-      tap( (parms:ParamMap) =>console.log(parms)),
       switchMap( (parms:ParamMap) =>  {
-
         let parmId =  parms.get('id');
        return  this.getUserForId(parmId)
       }),
@@ -30,10 +27,6 @@ export class UserdetailComponent implements OnInit {
         return of({} as UserResp);})
 
    ).subscribe((userResp:UserResp) => {this.user = userResp.data;} );
-
-
-
-
   }
 
   getUserForId(id:any) : Observable<UserResp>{
