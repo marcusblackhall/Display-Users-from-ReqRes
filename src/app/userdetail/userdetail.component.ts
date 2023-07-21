@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable, of, switchMap, tap } from 'rxjs';
+import { Observable, catchError, of, switchMap, tap } from 'rxjs';
 import { UserService } from '../service/user-service';
 import { User, UserResp } from '../model/user';
 
@@ -12,6 +12,7 @@ import { User, UserResp } from '../model/user';
 export class UserdetailComponent implements OnInit {
 
   user = {} as User;
+  error: string = "";
 
   constructor(private route:ActivatedRoute, private userService:UserService ) { }
 
@@ -23,8 +24,10 @@ export class UserdetailComponent implements OnInit {
 
         let parmId =  parms.get('id');
        return  this.getUserForId(parmId)
-      })
-
+      }),
+       catchError(e => {
+        this.error = "User does dot exist";
+        return of({} as UserResp);})
 
    ).subscribe((userResp:UserResp) => {this.user = userResp.data;} );
 
