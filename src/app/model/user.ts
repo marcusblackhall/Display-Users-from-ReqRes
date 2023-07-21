@@ -1,4 +1,4 @@
-export interface User {
+export interface User{
 
    id: number,
    first_name: string,
@@ -11,4 +11,9 @@ export interface UserData {
 
   data: User[],
   total_pages: number
+}
+
+export  interface UserResp {
+
+  data: User
 }
