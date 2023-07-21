@@ -19,4 +19,11 @@ export class UserService {
     return this.http.get<UserData>(this.apiUrl, { params });
 
   }
+
+  getUser(id: string): Observable<UserData> {
+    
+
+    return this.http.get<UserData>(this.apiUrl + "/" + id);
+
+  }
 }

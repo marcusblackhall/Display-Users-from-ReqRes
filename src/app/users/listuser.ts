@@ -42,7 +42,7 @@ export class ListUsers implements OnInit {
     .pipe(
       tap((userData:UserData) =>
       {
-      console.log("No. of pages " + userData.total_pages);
+      
       this.noPages = userData.total_pages;
       for (let i=0;i< userData.total_pages;i++){
           this.pages[i] = i+1;
@@ -55,7 +55,9 @@ export class ListUsers implements OnInit {
       )
       .subscribe( (user:User)  => {
         this.users.push(user);
-        console.log(user)});
+        
+      
+      });
   }
 
 
