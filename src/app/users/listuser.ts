@@ -12,8 +12,8 @@ export class ListUsers implements OnInit ,OnDestroy{
 
   title = 'Users';
   noPages:number = 0;
-  pages:number[] = [];
-  currPage: number = 0;
+
+  currPage!: number ;
   users:User[] = [];
   sub!: Subscription;
 
@@ -24,39 +24,22 @@ export class ListUsers implements OnInit ,OnDestroy{
   }
   ngOnInit(): void {
 
-     this.goToPage(1);
+   this.currPage = 1;
 
   }
 
-  goToPrev(){
-    if (this.currPage <= 1){
-      return;
-    }
-    this.goToPage(--this.currPage);
-  }
 
-  goToNext(){
-
-      if (this.currPage >= this.noPages) return;
-      this.currPage++;
-      this.goToPage(this.currPage);
-
-  }
 
   goToPage(pageNo:number){
 
-    this.currPage = pageNo;
+
 
     this.users = [];
-    this.sub  =  this.userService.getUsers(this.currPage)
+    this.sub  =  this.userService.getUsers(pageNo)
     .pipe(
       tap((userData:UserData) =>
       {
-
       this.noPages = userData.total_pages;
-      for (let i=0;i< userData.total_pages;i++){
-          this.pages[i] = i+1;
-      }
       }
 
       ),

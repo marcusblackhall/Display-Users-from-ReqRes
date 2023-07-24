@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListUsers } from './users/listuser';
 import { PageNotFound } from './pagenotfound';
 import { UserdetailComponent } from './userdetail/userdetail.component';
+import { PageNavigationComponent } from './page-navigation/page-navigation.component';
 
 const routes:Routes = [
 
@@ -26,7 +27,8 @@ const routes:Routes = [
     MakeredDirective,
     ListUsers,
     PageNotFound,
-    UserdetailComponent
+    UserdetailComponent,
+    PageNavigationComponent
   ],
   imports: [
     BrowserModule,
