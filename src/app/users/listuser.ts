@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {  Subscription, mergeMap, of, switchMap, tap, toArray } from 'rxjs';
+import { Subscription, mergeMap, of, switchMap, tap, toArray } from 'rxjs';
 import { UserService } from '../service/user-service';
 import { User, UserData } from '../model/user';
 
@@ -8,45 +8,34 @@ import { User, UserData } from '../model/user';
   templateUrl: './listuser.html',
 
 })
-export class ListUsers implements OnInit ,OnDestroy{
+export class ListUsers implements OnDestroy {
 
   title = 'Users';
-  noPages:number = 0;
+  noPages: number = 0;
 
-  currPage!: number ;
-  users:User[] = [];
+  users: User[] = [];
   sub!: Subscription;
 
 
-  constructor( private userService:UserService ){}
+  constructor(private userService: UserService) { }
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
-  ngOnInit(): void {
 
-   this.currPage = 1;
-
-  }
-
-
-
-  goToPage(pageNo:number){
-
-
+  goToPage(pageNo: number) {
 
     this.users = [];
-    this.sub  =  this.userService.getUsers(pageNo)
-    .pipe(
-      tap((userData:UserData) =>
-      {
-      this.noPages = userData.total_pages;
-      }
+    this.sub = this.userService.getUsers(pageNo)
+      .pipe(
+        tap((userData: UserData) => {
+          this.noPages = userData.total_pages;
+        }
 
-      ),
-      switchMap((userData:UserData) => userData.data )
+        ),
+        switchMap((userData: UserData) => userData.data)
 
       )
-      .subscribe( (user:User)  => {
+      .subscribe((user: User) => {
         this.users.push(user);
 
 
