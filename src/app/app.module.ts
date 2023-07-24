@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
-import { MakeredDirective } from './makered.directive';
+
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ListUsers } from './users/listuser';
@@ -16,7 +16,7 @@ const routes:Routes = [
   {path: 'users' , component : ListUsers},
   {path: 'userdetail/:id',component: UserdetailComponent},
   { path: '',   redirectTo: '/users', pathMatch: 'full' },
-  
+
   {path: '**' , component : PageNotFound }
 
 ]
@@ -24,7 +24,6 @@ const routes:Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MakeredDirective,
     ListUsers,
     PageNotFound,
     UserdetailComponent,

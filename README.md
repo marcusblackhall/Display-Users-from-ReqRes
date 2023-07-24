@@ -11,6 +11,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Description
-Request user data supplied by [reqres.in](https://reqres.in). 
+Request user data supplied by [reqres.in](https://reqres.in). Display users in a grid and allow show detail of user. 
+
+I have made a branch for use in [codesandbox](https://codesandbox.io/p/github/marcusblackhall/display-users-from-reqres/draft/jovial-dijkstra)
+
 
   
