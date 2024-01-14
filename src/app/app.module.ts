@@ -10,6 +10,7 @@ import { ListUsers } from './users/listuser';
 import { PageNotFound } from './pagenotfound';
 import { UserdetailComponent } from './userdetail/userdetail.component';
 import { PageNavigationComponent } from './page-navigation/page-navigation.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes:Routes = [
 
@@ -31,6 +32,7 @@ const routes:Routes = [
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],

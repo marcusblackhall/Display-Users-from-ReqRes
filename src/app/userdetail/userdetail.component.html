@@ -1,4 +1,5 @@
-<div class="container">
+<ng-container *ngIf="user$ | async as user">
+  <div class="container">
 
   <div *ngIf="!error ; else usernotfound" class="card">
     <img style="max-height: 128px; max-width:128px" src="{{user.avatar}}" class="img-fluid" alt="...">
@@ -20,3 +21,7 @@
   </div>
 
 </div>
+
+</ng-container>
+
+

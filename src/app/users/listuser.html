@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="row row-cols-4">
-  <div *ngFor="let user of users" class="col card" style="width: 15rem; margin: 1em">
+  <div *ngFor="let user of users$ | async" class="col card" style="width: 15rem; margin: 1em">
     <img src="{{user.avatar}}" style="max-height:128px;max-width:128px" class="card-img-top" alt="...">
     <div class="card-body" >
       <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
@@ -9,6 +9,9 @@
       <a href="#" class="btn btn-primary" [routerLink]="['/userdetail/',user.id]" >Detail</a>
     </div>
   </div>
+</div>
+<div>
+  <input class="form-control" placeholder="No Per page" [formControl]="noPerPage" (input)="changeNoPerPage($event)" />
 </div>
 <page-navigation [noPages]="noPages" (currPage)="goToPage($event)" ></page-navigation>
 
